@@ -5,8 +5,8 @@ import json
 
 def main(i):
     v_i  = i
-    API_KEY = 'AIzaSyARMci7Ly0Gct3GdvedC0RvEkIkJxPp8us'
-    BLOG_ID = '7386981156040281183'  # Replace with your Blogger blog ID
+    API_KEY = ''
+    BLOG_ID = ''  # Replace with your Blogger blog ID
 
     # Define the API endpoint
     url = f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts'
@@ -35,10 +35,10 @@ def main(i):
         url = "https://whin2.p.rapidapi.com/send"
         headers = {
             "content-type": "application/json",
-            "X-RapidAPI-Key": 'e490b9fc53mshc63429375f5f05bp1170f2jsnb6082dc533c9',
+            "X-RapidAPI-Key": '',
             "X-RapidAPI-Host": "whin2.p.rapidapi.com"}
         url = "https://whin2.p.rapidapi.com/send2group"
-        querystring = {"gid": "120363140048868763"}
+        querystring = {"gid": ""}
         requests.request("POST", url, json={"text": post_title + "\n" + post_url}, headers=headers, params=querystring)
         main(i+1)
 
