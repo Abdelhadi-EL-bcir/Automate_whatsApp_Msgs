@@ -1,6 +1,8 @@
 import requests
 import json
-
+import pywhatkit
+import pyautogui
+import time
 # Set up the necessary credentials and parameters
 API_KEY = 'AIzaSyARMci7Ly0Gct3GdvedC0RvEkIkJxPp8us'
 BLOG_ID = '7386981156040281183'  # Replace with your Blogger blog ID
@@ -12,7 +14,7 @@ url = f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts'
 params = {
     'key': API_KEY,
     'fetchBodies': False,  # Set to True if you want to fetch the post content as well
-    'maxResults': 10  # Number of posts to retrieve
+    'maxResults': 6  # Number of posts to retrieve
 }
 
 # Send the API request
@@ -24,19 +26,19 @@ if response.status_code == 200:
     data = json.loads(response.text)
 
     # Extract information about each post
+    i = 20
     for post in data['items']:
-        post_id = post['id']
         post_title = post['title']
-        post_published = post['published']
-        post_updated = post['updated']
-        # Add more attributes as per your requirement
-
-        # Print the information
-        print('Post ID:', post_id)
-        print('Title:', post_title)
-        print('Published:', post_published)
-        print('Updated:', post_updated)
-        print('---')
-
+        post_url = post['url']
+        string = "Hello, World! How are you?"
+        # Delete the substring "http://"
+        print(str(post_title))
+        start_index = post_url.find("http://")
+        end_index = start_index + len("http://")
+        new_url = post_url[:start_index] + post_url[end_index:]
+        #pywhatkit.sendwhatmsg_to_group('Jx6531uBlAPDnTsY2IvrQk', post_title+"\n"+new_url, 16, i)
+        pywhatkit.sendwhatmsg('+212609763388', str(post_title) , 16 , 51 )
+        #pyautogui.hotkey('enter')
+        i = i + 3
 else:
     print('Error:', response.status_code)
