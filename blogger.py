@@ -4,8 +4,8 @@ import pywhatkit
 import pyautogui
 import time
 # Set up the necessary credentials and parameters
-API_KEY = 'AIzaSyARMci7Ly0Gct3GdvedC0RvEkIkJxPp8us'
-BLOG_ID = '7386981156040281183'  # Replace with your Blogger blog ID
+API_KEY = ''
+BLOG_ID = ''  # Replace with your Blogger blog ID
 
 # Define the API endpoint
 url = f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts'
