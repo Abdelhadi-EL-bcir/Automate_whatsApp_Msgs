@@ -14,7 +14,7 @@ url = f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts'
 params = {
     'key': API_KEY,
     'fetchBodies': False,  # Set to True if you want to fetch the post content as well
-    'maxResults': 6  # Number of posts to retrieve
+    'maxResults': 5 # Number of posts to retrieve
 }
 
 # Send the API request
@@ -26,7 +26,7 @@ if response.status_code == 200:
     data = json.loads(response.text)
 
     # Extract information about each post
-    i = 20
+    i = 42
     for post in data['items']:
         post_title = post['title']
         post_url = post['url']
@@ -37,8 +37,8 @@ if response.status_code == 200:
         end_index = start_index + len("http://")
         new_url = post_url[:start_index] + post_url[end_index:]
         #pywhatkit.sendwhatmsg_to_group('Jx6531uBlAPDnTsY2IvrQk', post_title+"\n"+new_url, 16, i)
-        pywhatkit.sendwhatmsg('+212609763388', str(post_title) , 16 , 51 )
-        #pyautogui.hotkey('enter')
-        i = i + 3
+        pywhatkit.sendwhatmsg_to_group('Jx6531uBlAPDnTsY2IvrQk', str(post_title)+"\n"+new_url  , 23 , i )
+        pyautogui.hotkey('enter')
+        i = i + 1
 else:
     print('Error:', response.status_code)
